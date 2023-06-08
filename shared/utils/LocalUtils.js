@@ -1,16 +1,22 @@
+import { locales as middlewareLocales } from '../../middlewares/locales.js'
+
 export class LocalUtils {
 	static allLocales = [
 		{
 			fr: {
-				hello: 'Bonjour!',
+				not_found: 'Resource non trouvée',
+				error_unhandled_message: 'Une erreur est survenue',
 			},
 			en: {
-				hello: 'Hello!',
+				not_found: 'Resource not found',
+				error_unhandled_message: 'An error occurred',
 			},
 			nl: {
-				hello: 'Halo!',
+				not_found: 'Bron niet gevonden ',
+				error_unhandled_message: 'Er is een fout opgetreden',
 			},
 		},
+		middlewareLocales,
 	]
 
 	static getLocales() {

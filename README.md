@@ -35,7 +35,7 @@ installed and congigured [i18next](https://www.i18next.com/)
 
 if translations are too time-consuming, we'll implement (or find a package for) translation via middleware
 
-## Configuration 
+### Configuration 
 2 configuration files (.env and .env.dev) to differentiate the production environment from the development environment. 
 
 the configuration data is in these files, we've installed a package (dotenv) which takes the data from these files and puts it in string form in proccess.env (superglobal variable).
@@ -46,3 +46,29 @@ The sequence is as follows:
 EnvConfiguration -> retrieve .env OR .env.dev -> (dotenv package) -> process.env -> retrieve data from configuration classes (e.g. ServerConfiguration).
 
 Note that these classes are singletons to avoid modifying process.env data, and that we won't be using process.env data, but configuration classes.
+
+### Secure the app 
+[See official express.js recommendations](https://expressjs.com/en/advanced/best-practice-security.html)
+what are the keypoints 
+- use tls (not for dev)
+- use helmet 
+- reduce fingerprinting 
+- use cookies securely (we are not concerned as it is an api), same for sessions
+- prevent brute-force 
+- ensure dependencies are secure with npm audit
+- others (sanitize, etc)
+
+
+#### reduce fingerprinting : see server.js
+- app.disable('x-powered-by')
+- custom 404 
+- custom error handler
+
+#### prevent brute-force
+We implemented generalExceptLoginRateLimiter which is a middlware which counts the nb of request per "temporal window" per ip address. 
+Note that we have chosen an arbitrary value of 60 requests per minute.
+
+We plan to create another more restrictive middleware on the login page for obvious security reasons.
+
+#### other
+not implemented yet as we are still in the project setup 
