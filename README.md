@@ -30,7 +30,9 @@ Commit structure
 ### Pre-commit configuration 
 see front configuration as it very similar (husky)
 
+### Translations 
+installed and congigured [i18next](https://www.i18next.com/)
 
-
+if translations are too time-consuming, we'll implement (or find a package for) translation via middleware
 
 
