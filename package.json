@@ -1,0 +1,40 @@
+{
+  "name": "stable_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "mocha",
+    "eslint-check": "eslint .",
+    "prettier-check": "prettier --check .",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olivierHuvelle/stable_api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olivierHuvelle/stable_api/issues"
+  },
+  "homepage": "https://github.com/olivierHuvelle/stable_api#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "eslint": "^8.41.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "mocha": "^10.2.0",
+    "nodemon": "^2.0.22",
+    "prettier": "2.8.8"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js}": "prettier --write"
+  }
+}
