@@ -35,4 +35,14 @@ installed and congigured [i18next](https://www.i18next.com/)
 
 if translations are too time-consuming, we'll implement (or find a package for) translation via middleware
 
+## Configuration 
+2 configuration files (.env and .env.dev) to differentiate the production environment from the development environment. 
 
+the configuration data is in these files, we've installed a package (dotenv) which takes the data from these files and puts it in string form in proccess.env (superglobal variable).
+
+We'd like to have some protection in case of invalid data. If one or more configuration data are invalid, we want the application to crash.
+
+The sequence is as follows:
+EnvConfiguration -> retrieve .env OR .env.dev -> (dotenv package) -> process.env -> retrieve data from configuration classes (e.g. ServerConfiguration).
+
+Note that these classes are singletons to avoid modifying process.env data, and that we won't be using process.env data, but configuration classes.
