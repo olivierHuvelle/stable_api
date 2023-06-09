@@ -15,7 +15,7 @@ export class StableInvalidEnvironmentError extends Error {
 }
 
 export class EnvConfiguration {
-	// notice it is NOT a strict singleton as it is always possible to change the class from outside of the scope
+	// notice it is NOT a "strict" singleton as it is always possible to change the class from outside of the scope ex EnvConfiguration.instance = undefined
 	static instance = undefined
 
 	constructor(environment) {

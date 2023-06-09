@@ -72,3 +72,29 @@ We plan to create another more restrictive middleware on the login page for obvi
 
 #### other
 not implemented yet as we are still in the project setup 
+
+### Logger 
+
+We want to have a log system that allows us to
+- keep track of each request easily
+- add logs manually
+- save information in files while keeping messages in the console
+- easily distinguish several levels of log severity (debug, info, warning, error, ...)
+
+After a quick search on the subject, we chose the following packages
+- winston (the package in charge of logs)
+- express-winston (a package that lets you use winston as middleware)
+
+
+Loggers are defined in shared/loggers/loggers.js
+- logger for requests (used later as middleware) with levels ['info', 'warn', 'error'], each level has its own file and the files are in the logs/requests directory
+
+- logger for errorHandler, which is also used as middleware, but must be declared separately (see documentation). Its purpose is not to log the requests that caused the errors, but rather the stack of errors in the logs/others directory.
+
+- logger others (if we wish to debug, for example): levels ['debug', 'info', 'warn']. destination directory => same as errorHandler. One level one file as always
+
+Finally, we've formatted each message to make it as readable as possible.
+
+Note that there are a lot of files, and as there is a lot of information in each file, we may need to set up a task-cron to delete log files at regular intervals. 
+
+Later, we're going to set up an smtp configuration and send an e-mail in the event of an unhandled error, with a log of the error and the associated request - only when we're in production, of course.
