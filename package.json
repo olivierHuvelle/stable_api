@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/olivierHuvelle/stable_api#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.1.4",
     "enum": "^3.0.4",
     "express": "^4.18.2",
