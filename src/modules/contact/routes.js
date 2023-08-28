@@ -17,6 +17,15 @@ contactRouter.get(
 	validate(ContactValidator.byRole()),
 	controller.getContactByRole
 )
+
+contactRouter.get(
+	`/${prefix}/by-role-category/:roleCategory`,
+	isAuthenticated,
+	hasRoleCategory(['ADMIN', 'EMPLOYEE']),
+	validate(ContactValidator.byRoleCategory()),
+	controller.getContactByRoleCategory
+)
+
 contactRouter.get(
 	`/${prefix}/:id`,
 	isAuthenticated,

@@ -6,5 +6,5 @@ export default {
 	origin: environment.environment === 'PROD' ? process.env.CORS_ALLOWED_ORIGIN : false,
 	optionsSuccessStatus: 200,
 	allowedHeaders: ['Content-Type', 'Authorization', 'RefreshToken'],
-	exposedHeaders: ['Content-Length', 'Content-Type', 'RefreshToken', 'Token'],
+	exposedHeaders: ['Content-Length', 'Content-Type', 'RefreshToken', 'Token', 'RoleCategory'],
 }
