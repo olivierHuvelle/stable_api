@@ -19,6 +19,14 @@ export class AuthenticationService {
 				},
 			},
 		})
+		const user = await db.models.User.findOne({
+			where: {
+				email: data.email,
+			},
+		})
+		if (user) {
+			throw createError(422, i18next.t('authentication_already_registered'))
+		}
 		data.roleId = clientRole.id
 		return await this.register(data)
 	}
@@ -27,6 +35,14 @@ export class AuthenticationService {
 		const role = await db.models.Role.findByPk(data.roleId)
 		if (!role) {
 			throw createError(404, i18next.t('role_404'))
+		}
+		const user = await db.models.User.findOne({
+			where: {
+				email: data.email,
+			},
+		})
+		if (user) {
+			throw createError(422, i18next.t('authentication_already_registered'))
 		}
 		return await this.register(data)
 	}

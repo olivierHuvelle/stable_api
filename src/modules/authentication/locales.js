@@ -22,6 +22,7 @@ export const authenticationLocales = {
 			"Un email de demande de confirmation de compte a été envoyé à l'adresse indiquée",
 		authentication_confirm_message: 'Confirmation de votre compte',
 		authentication_already_confirmed: 'Ce compte a déjà été confirmé',
+		authentication_already_registered: 'Il y a déjà un compte associé à cette adresse email',
 
 		// login
 		authentication_login_password_invalid: 'Mot de passe incorrect',
