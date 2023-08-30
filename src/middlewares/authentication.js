@@ -10,6 +10,7 @@ export default async function authenticate(request, response, next) {
 	response.setHeader('Token', 'invalidToken')
 	response.setHeader('RefreshToken', 'invalidRefreshToken')
 	response.setHeader('RoleCategory', 'CLIENT')
+	response.setHeader('UserId', '0')
 
 	request.user = null
 
@@ -38,6 +39,7 @@ export default async function authenticate(request, response, next) {
 	request.user = user
 	request.user.roleCategory = await new RoleService().getRoleCategory(request.user.roleId)
 	response.setHeader('RoleCategory', request.user.roleCategory)
+	response.setHeader('UserId', request.user.id)
 
 	//check if token renewal time is close (15 minutes) and if so generate new tokens
 	const now = new Date()

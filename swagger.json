@@ -1066,6 +1066,49 @@
         "description": "Create new contact"
       }
     },
+    "/contacts/by-role-category/{roleCategory}": {
+      "get": {
+        "summary": "Get contacts by role category [ADMIN, EMPLOYEE, CLIENT]",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "roleCategory",
+            "type": "string",
+            "required": true,
+            "description": "role category"
+          }
+        ],
+        "tags": [
+          "Contact"
+        ],
+        "description": "Get contacts by roleCategory",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ContactByRoleCategoryList"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
     "/contacts/by-role/{roleId}": {
       "get": {
         "summary": "Get contacts by roleId [ADMIN]",
@@ -4854,6 +4897,52 @@
           "type": "string",
           "format": "date-time"
         }
+      }
+    },
+    "ContactByRoleCategory": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "invoicingAddress": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "userId": {
+          "type": "integer"
+        },
+        "horses": {
+          "type": "integer"
+        }
+      }
+    },
+    "ContactByRoleCategoryList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ContactByRoleCategory"
       }
     },
     "ContactList": {
