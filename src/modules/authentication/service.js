@@ -83,7 +83,7 @@ export class AuthenticationService {
 	async findUserByConfirmPasswordOrFail(confirmationCode) {
 		const user = await db.models.User.findOne({ where: { confirmationCode } })
 		if (!user) {
-			throw createError(404, i18next.t('authentication_404'))
+			throw createError(404, i18next.t('authentication_401_confirmationCode'))
 		}
 		return user
 	}
